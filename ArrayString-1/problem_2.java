@@ -10,7 +10,7 @@ public class problem_2{
 	static boolean permutation(String main, String per){
 		char[] mainChar = main.toCharArray();
 		char[] perChar = per.toCharArray();
-
+//g
 		int[] mainC = new int[26];
 		int[] perC = new int[26];
 		
