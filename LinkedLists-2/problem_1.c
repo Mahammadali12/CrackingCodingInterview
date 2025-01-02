@@ -13,11 +13,18 @@ void add_to_end(int v,struct node* head);
 int main(void)
 {
 	struct node* head = (struct node*) malloc(sizeof(struct node));
+	head->value=31;
 	add_to_end(00,head);
 	add_to_end(01,head);
 	add_to_end(02,head);
 	add_to_end(03,head);
 	add_to_end(04,head);
+	struct node* temp=head;
+	while (temp->next!=NULL)
+	{
+		printf("%i\n",temp->value);
+		temp= temp->next;
+	}
 	free_list(head);
 }
 
