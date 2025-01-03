@@ -2,10 +2,11 @@ public class problem_8{
 
 	public static void main(String [] args){
 
-	int [] []arr = {{1,0,4,5},
+	int [] []arr = {
+			{1,0,4,5},
 			{2,4,5,6},
-			{31,1,23,432},
-			{2,0,432,12},
+			{1,1,2,4},
+			{2,1,4,0},
 			{1,2,3,4}};
 	boolean[] rows = new boolean[arr.length];
 	boolean[] columns = new boolean[arr[0].length];
