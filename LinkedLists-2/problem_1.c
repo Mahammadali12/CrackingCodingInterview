@@ -14,7 +14,7 @@ void add_to_end(int v,struct node* head);
 int main(void)
 {
 	struct node* head = (struct node*) malloc(sizeof(struct node));
-	head->value=31;
+	head->value=3100;
 	add_to_end(0,head);
 	add_to_end(1,head);
 	add_to_end(2,head);
@@ -29,18 +29,17 @@ int main(void)
 	add_to_end(7,head);
 	add_to_end(1,head);
 	struct node* temp_2=head;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
-	temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
+	// temp_2=temp_2->next;
 	// printf("%i\n",temp_2->value);
 	struct node* temp=head;
-	struct node* temp2=head;
 	while (temp!=NULL)
 	{
 		printf("%i ",temp->value);
@@ -48,12 +47,16 @@ int main(void)
 	}
 	printf("\n");
 
+	struct node* temp2=head;
+	printf("%p %p\n",head,head->next);
 	removeNode(head,temp_2);
+	printf("%p %p\n",head,head->next);
 	while (temp2!=NULL)
 	{
 		printf("%i  ",temp2->value);
-		temp2= temp2->next;
+		temp2 = temp2->next;
 	}
+
 	printf("\n");
 	free_list(head);
 }
@@ -87,15 +90,24 @@ void removeDuplicate(struct node* head)
 void removeNode(struct node* head,struct node* remove)
 {
 	struct node* temp = head;
-	if (temp = remove)
+	if (head == remove)
 	{
+		printf("%p %p---BEFORE\n",head,head->next);
+		// printf("%p %p\n",remove,remove->next);
+		head = head->next;
+		printf("%p %p-------AFTER\n",head,head->next);
 		remove->next=NULL;
+		
+		// printf("%p %p\n",remove,remove->next);
+		
+		return;	
 		// free(remove);
 	}
-
 	while (temp != NULL)
 	{
-		if(temp->next = remove)
+
+		// printf("HIIIII\n");
+		if(temp->next == remove)
 		{
 			temp->next=remove->next;
 			remove->next=NULL;
@@ -103,7 +115,7 @@ void removeNode(struct node* head,struct node* remove)
 			break;
 		}
 
-		if(remove->next=NULL)
+		if(remove->next == NULL)
 		{
 			temp->next=NULL;
 			// free(remove);
