@@ -11,9 +11,12 @@ void removeNode(struct node* head,struct node* remove);
 void free_list(struct node* head);
 void add_to_end(int v,struct node* head);
 
+
+struct node* head;
+
 int main(void)
 {
-	struct node* head = (struct node*) malloc(sizeof(struct node));
+	head = (struct node*) malloc(sizeof(struct node));
 	head->value=3100;
 	add_to_end(0,head);
 	add_to_end(1,head);
@@ -28,17 +31,31 @@ int main(void)
 	add_to_end(6,head);
 	add_to_end(7,head);
 	add_to_end(1,head);
+	struct node* temp_1=head;
 	struct node* temp_2=head;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// temp_2=temp_2->next;
-	// printf("%i\n",temp_2->value);
+	struct node* temp_3=head;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_2=temp_2->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
+	temp_3=temp_3->next;
 	struct node* temp=head;
 	while (temp!=NULL)
 	{
@@ -47,10 +64,10 @@ int main(void)
 	}
 	printf("\n");
 
-	struct node* temp2=head;
-	printf("%p %p\n",head,head->next);
+	removeNode(head,temp_1);
 	removeNode(head,temp_2);
-	printf("%p %p\n",head,head->next);
+	removeNode(head,temp_3);
+	struct node* temp2=head;
 	while (temp2!=NULL)
 	{
 		printf("%i  ",temp2->value);
@@ -86,46 +103,41 @@ void removeDuplicate(struct node* head)
 
 }
 
-
-void removeNode(struct node* head,struct node* remove)
+void removeNode(struct node* head_node,struct node* remove)
 {
-	struct node* temp = head;
 	if (head == remove)
 	{
-		printf("%p %p---BEFORE\n",head,head->next);
-		// printf("%p %p\n",remove,remove->next);
 		head = head->next;
-		printf("%p %p-------AFTER\n",head,head->next);
 		remove->next=NULL;
-		
-		// printf("%p %p\n",remove,remove->next);
-		
+		free(remove);
 		return;	
-		// free(remove);
 	}
-	while (temp != NULL)
+
+	if(remove->next == NULL)
 	{
-
-		// printf("HIIIII\n");
-		if(temp->next == remove)
+		while (head_node->next != remove)
 		{
-			temp->next=remove->next;
+			head_node = head_node->next;
+			remove->next = NULL;
+		}
+		
+		head_node->next=NULL;
+		free(remove);
+		return;
+	}
+
+	while (head_node != NULL)
+	{
+		if(head_node->next == remove)
+		{
+			head_node->next=remove->next;
 			remove->next=NULL;
-			// free(remove);
+			free(remove);
 			break;
 		}
-
-		if(remove->next == NULL)
-		{
-			temp->next=NULL;
-			// free(remove);
-			break;
-		}
-		temp=temp->next;
+		head_node=head_node->next;
 	}
 }
-
-
 
 void free_list(struct node* head)
 {
