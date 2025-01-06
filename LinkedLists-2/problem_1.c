@@ -20,17 +20,30 @@ int main(void)
 	head = (struct node*) malloc(sizeof(struct node));
 	head->value=310;
 	add_to_end(1,head);
+	add_to_end(7,head);
 	add_to_end(310,head);
+	add_to_end(400,head);
+	add_to_end(7,head);
 	add_to_end(2,head);
 	add_to_end(3,head);
+	add_to_end(400,head);
+	add_to_end(7,head);
 	add_to_end(4,head);
 	add_to_end(7,head);
 	add_to_end(3,head);
-	add_to_end(1,head);
+	add_to_end(7,head);
 	add_to_end(400,head);
 	add_to_end(3,head);
-	add_to_end(6,head);
+	add_to_end(3,head);
+	add_to_end(1,head);
 	add_to_end(7,head);
+	add_to_end(400,head);
+	add_to_end(3,head);
+	add_to_end(400,head);
+	add_to_end(3,head);
+	add_to_end(7,head);
+	add_to_end(6,head);
+	add_to_end(3,head);
 	add_to_end(1,head);
 
 	for (int i = 0; i < 5; i++)
@@ -111,6 +124,7 @@ void removeDuplicate(struct node* head_node)
 
 void removeNode(struct node* head_node,struct node* remove)
 {
+	struct node* temp_head = head;
 	if (head == remove)
 	{
 		head = head->next;
@@ -122,27 +136,28 @@ void removeNode(struct node* head_node,struct node* remove)
 
 	if(remove->next == NULL)
 	{
-		while (head_node->next != remove)
+		while (temp_head->next != remove)
 		{
-			head_node = head_node->next;
+			temp_head = temp_head->next;
 			// remove->next = NULL;
 		}
 		
-		head_node->next=NULL;
+		temp_head->next=NULL;
 		free(remove);
 		return;
 	}
 
-	while (head_node != NULL)
+	while (temp_head != NULL)
 	{
-		if(head_node->next == remove)
+		if(temp_head->next == remove)
 		{
-			head_node->next=remove->next;
+			temp_head->next=remove->next;
 			remove->next=NULL;
-			// free(remove);
+			free(remove);
 			break;
 		}
-		head_node=head_node->next;
+		else
+		temp_head=temp_head->next;
 	}
 
 	// while (head_node->next != remove)
