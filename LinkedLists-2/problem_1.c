@@ -20,6 +20,7 @@ int main(void)
 	head = (struct node*) malloc(sizeof(struct node));
 	head->value=310;
 	add_to_end(1,head);
+	add_to_end(310,head);
 	add_to_end(2,head);
 	add_to_end(3,head);
 	add_to_end(4,head);
@@ -70,7 +71,6 @@ int main(void)
 	// removeNode(head,temp_1);
 	// removeNode(head,temp_2);
 	// removeNode(head,temp_3);
-		printf("HIII");
 	removeDuplicate(head);
 	struct node* temp2=head;
 	
@@ -86,7 +86,6 @@ int main(void)
 void removeDuplicate(struct node* head_node)
 {
 	struct node* temp=head_node;
-		printf("HIII");
 	
 	while (temp != NULL)
 	{
@@ -98,11 +97,14 @@ void removeDuplicate(struct node* head_node)
 	struct node* remove;
 	while (temp != NULL)
 	{
-		if(nums[temp->value]>0)
+		if(nums[temp->value]>1)
 		{
 			nums[temp->value]--;
-			removeNode(head_node,temp);
+			remove = temp;
+			temp = temp->next;
+			removeNode(head_node,remove);
 		}
+		else
 		temp=temp->next;
 	}
 }
@@ -112,6 +114,7 @@ void removeNode(struct node* head_node,struct node* remove)
 	if (head == remove)
 	{
 		head = head->next;
+		// head_node = head_node->next;
 		remove->next=NULL;
 		free(remove);
 		return;	
@@ -122,7 +125,7 @@ void removeNode(struct node* head_node,struct node* remove)
 		while (head_node->next != remove)
 		{
 			head_node = head_node->next;
-			remove->next = NULL;
+			// remove->next = NULL;
 		}
 		
 		head_node->next=NULL;
@@ -136,11 +139,24 @@ void removeNode(struct node* head_node,struct node* remove)
 		{
 			head_node->next=remove->next;
 			remove->next=NULL;
-			free(remove);
+			// free(remove);
 			break;
 		}
 		head_node=head_node->next;
 	}
+
+	// while (head_node->next != remove)
+	// {
+	// 	head_node = head_node->next;
+	// }
+
+	// head_node->next = remove->next;
+	// remove->next = NULL;
+	// free(remove);
+	
+
+
+
 }
 
 void free_list(struct node* head)
