@@ -1,12 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
-
-struct node
-{
-	struct node* next;
-	int value;
-};
-
+#include "list.h"
 
 void removeNode(struct node* head,struct node* remove);
 void free_list(struct node* head);
@@ -143,22 +137,3 @@ void removeNode(struct node* head_node,struct node* remove)
 	}
 }
 
-void free_list(struct node* head)
-{
-	if(head == NULL)
-		return ;
-	free_list(head->next);
-	free(head);
-}
-
-void add_to_end(int v,struct node* head)
-{
-	struct node* temp=head;
-	while(temp->next!=NULL)
-	{
-		temp=temp->next;
-	}
-	temp->next = (struct node*) malloc(sizeof(struct node)); 
-	temp=temp->next;
-	temp->value=v;
-}
