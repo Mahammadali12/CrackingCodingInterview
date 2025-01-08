@@ -59,19 +59,6 @@ int main(void)
 		add_to_end(5,head);
 	}
 	
-	// struct node* temp_1=head;
-	// struct node* temp_2=head;
-	// struct node* temp_3=head;
-	
-	// for (int i = 0; i < 9 ; i++)
-	// {
-	// 	temp_2=temp_2->next;
-	// }
-
-	// for (int i = 0; i < 13 ; i++)
-	// {
-	// 	temp_3=temp_3->next;
-	// }
 	
 	struct node* temp=head;
 	while (temp!=NULL)
@@ -81,9 +68,6 @@ int main(void)
 	}
 	printf("\n");
 
-	// removeNode(head,temp_1);
-	// removeNode(head,temp_2);
-	// removeNode(head,temp_3);
 	removeDuplicate(head);
 	struct node* temp2=head;
 	
@@ -128,7 +112,6 @@ void removeNode(struct node* head_node,struct node* remove)
 	if (head == remove)
 	{
 		head = head->next;
-		// head_node = head_node->next;
 		remove->next=NULL;
 		free(remove);
 		return;	
@@ -139,7 +122,6 @@ void removeNode(struct node* head_node,struct node* remove)
 		while (temp_head->next != remove)
 		{
 			temp_head = temp_head->next;
-			// remove->next = NULL;
 		}
 		
 		temp_head->next=NULL;
@@ -159,19 +141,6 @@ void removeNode(struct node* head_node,struct node* remove)
 		else
 		temp_head=temp_head->next;
 	}
-
-	// while (head_node->next != remove)
-	// {
-	// 	head_node = head_node->next;
-	// }
-
-	// head_node->next = remove->next;
-	// remove->next = NULL;
-	// free(remove);
-	
-
-
-
 }
 
 void free_list(struct node* head)
