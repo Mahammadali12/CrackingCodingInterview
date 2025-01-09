@@ -3,8 +3,6 @@
 #include "list.h"
 
 void removeNode(struct node* head,struct node* remove);
-void free_list(struct node* head);
-void add_to_end(int v,struct node* head);
 void removeDuplicate(struct node* head_node);
 
 struct node* head;
