@@ -37,3 +37,14 @@ int listLength(struct node* head)
     }
     return i;
 }
+
+void printList(struct node* head)
+{
+	while (head != NULL)
+	{
+		printf("%i ",head->value);
+		head = head->next;
+	}
+	printf("\n");
+	
+}
