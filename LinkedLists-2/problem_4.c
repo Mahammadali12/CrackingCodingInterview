@@ -6,5 +6,5 @@ struct node* head;
 
 int main (void)
 {
-    
+       
 }
